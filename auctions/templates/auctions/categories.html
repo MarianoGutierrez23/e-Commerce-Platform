@@ -1,0 +1,20 @@
+{% extends 'auctions/layout.html' %}
+{% block title %}
+    Search By Category
+{% endblock %}
+
+{% block body %}
+
+{% if categories %}
+    <h2>Categories</h2>
+    <ul>
+        {% for category in categories %}
+            <li>
+               <a href="{% url 'category' category %}">{{category}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <div class="text-muted">None listings found.</div>
+{% endif %}
+{% endblock %}

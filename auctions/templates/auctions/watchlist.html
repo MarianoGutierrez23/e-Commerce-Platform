@@ -1,0 +1,36 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}
+    Watchlist
+{% endblock %}
+
+{% block body %}
+{% if favorites %}
+    <h2>Your Watchlist</h2>
+    <table class="table table-hover">
+        {% for favorite in favorites %}
+            <tr>
+                <td style="width: 15%;">
+                    <a href="{% url 'listing' favorite.listing.id %}">
+                        <img src="{{favorite.listing.image}}" alt="Image" style="width: 100%;">
+                    </a>
+                    
+                </td>
+                <td>
+                    <h4>{{favorite.listing.title}}</h4>
+                    <ul>
+                        <li>
+                            Price: <strong>$ {{favorite.listing.current_bid}}</strong>
+                        </li>
+                        <li>
+                            {{favorite.listing.description}}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <div class="text-muted conteiner-fluid">Your Watchlist is empty.</div>
+{% endif %}
+{% endblock %}
